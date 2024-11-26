@@ -70,3 +70,11 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+.App {
+    width: 100vw;
+}
+
+.App h1 {
+    text-align: center;
+}
