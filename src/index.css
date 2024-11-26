@@ -72,9 +72,13 @@ button:focus-visible {
 }
 
 .App {
-    width: 100vw;
+  width: 100vw;
 }
 
 .App h1 {
-    text-align: center;
+  text-align: center;
+}
+
+svg {
+  min-height: 80vh;
 }

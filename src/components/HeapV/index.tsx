@@ -1,12 +1,12 @@
-import { useCallback, useEffect, useState } from 'react';
-import { motion } from 'framer-motion';
-import TreeNode from '../TreeNode';
-import "./HeapV.scss"
+import { useCallback, useEffect, useState } from "react";
+import { motion } from "framer-motion";
+import TreeNode from "../TreeNode";
+import "./HeapV.scss";
 
 enum HEAP_TYPES {
   MAX,
-  MIN
-};
+  MIN,
+}
 
 type Step = {
   heap: number[];
@@ -49,7 +49,11 @@ class Heap {
       const parentIndex = this.getParentIndex(i);
       if (!this.compare(this.heap[i], this.heap[parentIndex])) break;
       this.swap(i, parentIndex);
-      steps.push({ heap: [...this.heap], highlight: [i, parentIndex], newNode: parentIndex });
+      steps.push({
+        heap: [...this.heap],
+        highlight: [i, parentIndex],
+        newNode: parentIndex,
+      });
       i = parentIndex;
     }
 
@@ -88,16 +92,15 @@ function HeapV() {
   const [heap, setHeap] = useState(new Heap(HEAP_TYPES.MAX));
 
   // Form
-  const [inputValue, setInputValue] = useState('');
+  const [inputValue, setInputValue] = useState("");
 
   // Animations
   const [animationSteps, setAnimationSteps] = useState<Step[]>([]);
   const [currentStep, setCurrentStep] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
-  
+
   // Talvez use?
   // const [windowWidth, setWindowWidth] = useState(0);
-  
 
   // Função para inserir no heap
   // const insertHeap = (value: number) => {
@@ -133,13 +136,12 @@ function HeapV() {
       setAnimationSteps(steps);
       setCurrentStep(0);
       setIsAnimating(true);
-      setInputValue('');
+      setInputValue("");
     }
   }, [inputValue, heap, isAnimating]);
 
   useEffect(() => {
     if (isAnimating && currentStep < animationSteps.length) {
-
       const currentStepData = animationSteps[currentStep];
       const newHeap = new Heap(heap.type);
       newHeap.heap = [...currentStepData.heap];
@@ -184,15 +186,21 @@ function HeapV() {
       </div>
 
       {/* Visualização da Árvore */}
-      <div className="tree-visualization">
+      <div className="tree-visualization" id="arvore">
         {heap.heap.length > 0 && (
-          <svg width="100%" height="300">
-            <TreeNode heap={heap.heap} index={0} x={300} y={50} stepX={150} />
+          <svg width="100%" height="100%">
+            <TreeNode
+              heap={heap.heap}
+              index={0}
+              x={document.getElementsByTagName("svg")[0]?.clientWidth / 2}
+              y={50}
+              stepX={150}
+            />
           </svg>
         )}
       </div>
     </div>
   );
-};
+}
 
-export default HeapV
+export default HeapV;
