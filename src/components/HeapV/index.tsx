@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
 import TreeNode from '../TreeNode';
 import "./HeapV.scss"
@@ -137,24 +137,24 @@ function HeapV() {
     }
   }, [inputValue, heap, isAnimating]);
 
-  //   useEffect(() => {
-  //     if (isAnimating && currentStep < animationSteps.length) {
+  useEffect(() => {
+    if (isAnimating && currentStep < animationSteps.length) {
 
-  //       const currentStepData = animationSteps[currentStep];
-  //       const newHeap = new Heap(heap.type);
-  //       newHeap.heap = [...currentStepData.heap];
-  //       setHeap(newHeap);
+      const currentStepData = animationSteps[currentStep];
+      const newHeap = new Heap(heap.type);
+      newHeap.heap = [...currentStepData.heap];
+      setHeap(newHeap);
 
-  //       const timer = setTimeout(() => {
-  //         setCurrentStep(currentStep + 1);
-  //         if (currentStep >= animationSteps.length - 1) {
-  //           setIsAnimating(false);
-  //         }
-  //       }, 1000);
+      const timer = setTimeout(() => {
+        setCurrentStep(currentStep + 1);
+        if (currentStep >= animationSteps.length - 1) {
+          setIsAnimating(false);
+        }
+      }, 1000);
 
-  //       return () => clearTimeout(timer);
-  //     }
-  //   }, [isAnimating, currentStep, animationSteps, heap.type]);
+      return () => clearTimeout(timer);
+    }
+  }, [isAnimating, currentStep, animationSteps, heap.type]);
 
   return (
     <div className="heap-container">
