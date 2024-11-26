@@ -1,0 +1,50 @@
+.heap-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.input-section {
+  margin-bottom: 20px;
+}
+
+.input-section input {
+  padding: 5px;
+  margin-right: 10px;
+}
+
+.input-section button {
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.heap-array {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.heap-node {
+  width: 40px;
+  height: 40px;
+  background-color: #4caf50;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-size: 18px;
+  font-weight: bold;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+.tree-visualization {
+  border: 1px solid #ddd;
+  width: 80%;
+  height: 300px;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  display: flex;
+  justify-content: center;
+}
