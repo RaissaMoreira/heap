@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import TreeNode from "../TreeNode";
+import backgroundImg from '../../assets/bg_imge.png';
 import "./HeapV.scss";
 
 enum HEAP_TYPES {
@@ -159,7 +160,16 @@ function HeapV() {
   }, [isAnimating, currentStep, animationSteps, heap.type]);
 
   return (
-    <div className="heap-container">
+    <div className="heap-container"
+      style={{
+        backgroundImage: `url('${backgroundImg}')`,
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
+      }}
+    >
+      <h1 className='title'>Heap Visualization</h1>
+
       <div className="input-section">
         <input
           type="number"
@@ -199,6 +209,8 @@ function HeapV() {
           </svg>
         )}
       </div>
+
+      <p className='footer'>Copyright © 2024 - Carlos Varela | Gabriel Becher | Matheus D'Avila | Raissa Moreira | Gabriel Fontes</p>
     </div>
   );
 }

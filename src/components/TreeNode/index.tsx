@@ -20,7 +20,7 @@ const TreeNode = ({ heap, index, x, y, stepX }: IProps) => {
           y1={y}
           x2={x - stepX}
           y2={y + 70}
-          stroke="black"
+          stroke="white"
           strokeWidth="2"
         />
       )}
@@ -32,13 +32,13 @@ const TreeNode = ({ heap, index, x, y, stepX }: IProps) => {
           y1={y}
           x2={x + stepX}
           y2={y + 70}
-          stroke="black"
+          stroke="white"
           strokeWidth="2"
         />
       )}
 
       {/* Nó atual */}
-      <circle cx={x} cy={y} r="20" fill="#4caf50" />
+      <circle cx={x} cy={y} r="20" fill="#8a59fd" />
       <text
         x={x}
         y={y}
