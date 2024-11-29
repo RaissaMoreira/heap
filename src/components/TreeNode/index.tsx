@@ -1,11 +1,12 @@
 interface IProps {
   heap: number[];
+  highlight?: number[];
   index: number;
   x: number;
   y: number;
   stepX: number;
 }
-const TreeNode = ({ heap, index, x, y, stepX }: IProps) => {
+const TreeNode = ({ heap, highlight, index, x, y, stepX }: IProps) => {
   if (index >= heap.length) return null;
 
   const leftChild = 2 * index + 1;
@@ -38,7 +39,12 @@ const TreeNode = ({ heap, index, x, y, stepX }: IProps) => {
       )}
 
       {/* Nó atual */}
-      <circle cx={x} cy={y} r="20" fill="#8a59fd" />
+      <circle
+        cx={x}
+        cy={y}
+        r="20"
+        fill={highlight?.includes(index) ? "#c1c423" : "#8a59fd"}
+      />
       <text
         x={x}
         y={y}
@@ -52,8 +58,22 @@ const TreeNode = ({ heap, index, x, y, stepX }: IProps) => {
       </text>
 
       {/* Renderização recursiva para filhos */}
-      <TreeNode heap={heap} index={leftChild} x={x - stepX} y={y + 70} stepX={stepX / 2} />
-      <TreeNode heap={heap} index={rightChild} x={x + stepX} y={y + 70} stepX={stepX / 2} />
+      <TreeNode
+        heap={heap}
+        highlight={highlight}
+        index={leftChild}
+        x={x - stepX}
+        y={y + 70}
+        stepX={stepX / 2}
+      />
+      <TreeNode
+        heap={heap}
+        highlight={highlight}
+        index={rightChild}
+        x={x + stepX}
+        y={y + 70}
+        stepX={stepX / 2}
+      />
     </>
   );
 };

@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import TreeNode from "../TreeNode";
-import backgroundImg from '../../assets/bg_imge.png';
+import backgroundImg from "../../assets/bg_imge.png";
 import "./HeapV.scss";
 
 enum HEAP_TYPES {
@@ -160,7 +160,8 @@ function HeapV() {
   }, [isAnimating, currentStep, animationSteps, heap.type]);
 
   return (
-    <div className="heap-container"
+    <div
+      className="heap-container"
       style={{
         backgroundImage: `url('${backgroundImg}')`,
         backgroundSize: "cover",
@@ -168,7 +169,7 @@ function HeapV() {
         backgroundRepeat: "no-repeat",
       }}
     >
-      <h1 className='title'>Heap Visualization</h1>
+      <h1 className="title">Heap Visualization</h1>
 
       <div className="input-section">
         <input
@@ -185,7 +186,11 @@ function HeapV() {
         {heap.heap.map((value, index) => (
           <motion.div
             key={index}
-            className="heap-node"
+            className={`heap-node ${
+              animationSteps[currentStep]?.highlight.includes(index)
+                ? "highlight"
+                : ""
+            }`}
             initial={{ scale: 0, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             exit={{ scale: 0, opacity: 0 }}
@@ -201,6 +206,7 @@ function HeapV() {
           <svg width="100%" height="100%">
             <TreeNode
               heap={heap.heap}
+              highlight={animationSteps[currentStep]?.highlight}
               index={0}
               x={document.getElementsByTagName("svg")[0]?.clientWidth / 2}
               y={50}
@@ -210,7 +216,10 @@ function HeapV() {
         )}
       </div>
 
-      <p className='footer'>Copyright © 2024 - Carlos Varela | Gabriel Becher | Matheus D'Avila | Raissa Moreira | Gabriel Fontes</p>
+      <p className="footer">
+        Copyright © 2024 - Carlos Varela | Gabriel Becher | Matheus D'Avila |
+        Raissa Moreira | Gabriel Fontes
+      </p>
     </div>
   );
 }
