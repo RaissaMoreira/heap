@@ -141,6 +141,14 @@ function HeapV() {
     }
   }, [inputValue, heap, isAnimating]);
 
+  const handleClear = () => {
+    setHeap(new Heap(heapType));
+    setAnimationSteps([]);
+    setCurrentStep(0);
+    setIsAnimating(false);
+    setInputValue("");
+  };
+
   useEffect(() => {
     if (isAnimating && currentStep < animationSteps.length) {
       const currentStepData = animationSteps[currentStep];
@@ -179,6 +187,7 @@ function HeapV() {
           placeholder="Enter value"
         />
         <button onClick={handleInsert}>Insert</button>
+        <button onClick={handleClear}>Clear</button>
       </div>
 
       {/* Visualização do Heap como Array */}
