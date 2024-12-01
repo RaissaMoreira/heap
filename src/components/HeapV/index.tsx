@@ -28,14 +28,6 @@ class Heap {
     return Math.floor((i - 1) / 2);
   }
 
-  // getLeftChildIndex(i: number) {
-  //   return 2 * i + 1;
-  // }
-
-  // getRightChildIndex(i: number) {
-  //   return 2 * i + 2;
-  // }
-
   swap(i1: number, i2: number) {
     [this.heap[i1], this.heap[i2]] = [this.heap[i2], this.heap[i1]];
   }
@@ -61,21 +53,6 @@ class Heap {
     return steps;
   }
 
-  // depth() {
-  //   return this.heap.length === 0 ? 0 : Math.floor(Math.log2(this.heap.length)) + 1;
-  // }
-
-  // size() {
-  //   return this.heap.length;
-  // }
-
-  // static fromArray(array: number[]) {
-  //   const newHeap = new Heap();
-  //   for (const item of array) {
-  //     newHeap.heap.push(item);
-  //   }
-  //   return newHeap;
-  // }
 
   compare(a: number, b: number) {
     if (this.type === HEAP_TYPES.MAX) return a > b;
@@ -84,9 +61,6 @@ class Heap {
 }
 
 function HeapV() {
-  // OLD
-  // const [heap, setHeap] = useState<number[]>([]);
-  // const [newValue, setNewValue] = useState("");
 
   // Heap
   const [heapType, setHeapType] = useState(HEAP_TYPES.MAX);
@@ -99,32 +73,6 @@ function HeapV() {
   const [animationSteps, setAnimationSteps] = useState<Step[]>([]);
   const [currentStep, setCurrentStep] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
-
-  // Talvez use?
-  // const [windowWidth, setWindowWidth] = useState(0);
-
-  // Função para inserir no heap
-  // const insertHeap = (value: number) => {
-  //   const newHeap = [...heap, value];
-  //   let i = newHeap.length - 1;
-
-  //   // Ajuste para manter propriedade do heap
-  //   while (i > 0) {
-  //     const parent = Math.floor((i - 1) / 2);
-  //     if (newHeap[parent] >= newHeap[i]) break;
-  //     [newHeap[parent], newHeap[i]] = [newHeap[i], newHeap[parent]];
-  //     i = parent;
-  //   }
-
-  //   setHeap(newHeap);
-  // };
-
-  //   const handleInsert = () => {
-  //     if (newValue.trim() !== "") {
-  //       insertHeap(parseInt(newValue));
-  //       setNewValue("");
-  //     }
-  //   };
 
   const handleInsert = useCallback(() => {
     const value = parseInt(inputValue);
