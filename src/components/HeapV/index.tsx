@@ -115,6 +115,12 @@ function HeapV() {
     }
   }, [isAnimating, currentStep, animationSteps, heap.type]);
 
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      handleInsert();
+    }
+  };
+
   return (
     <div
       className="heap-container"
@@ -132,9 +138,10 @@ function HeapV() {
           type="number"
           value={inputValue}
           onChange={(e) => setInputValue(e.target.value)}
+          onKeyDown={handleKeyDown}
           placeholder="Enter value"
         />
-        <button onClick={handleInsert}>Insert</button>
+        <button onClick={handleInsert} disabled={isAnimating}>Insert</button>
         <button onClick={handleClear}>Clear</button>
       </div>
 
